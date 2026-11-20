@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#071512">
+<title>Deka Sonjaya - Modern Spiritual (Hakikat Insan & Khalifah)</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{--gold:#c9a86a;--gold2:#e8d5a8;--green:#0f2e26;--bg:#071512;--muted:#c8c0ad}
+html,body{width:100%;height:100%;height:100vh;height:100dvh;height:100svh;overflow:hidden;background:#000;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#fff;overscroll-behavior:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+img{display:block;max-width:100%}
+.page{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;height:100svh;min-height:100dvh;display:none;overflow:hidden}
+.page.active{display:flex;flex-direction:column}
+
+/* ===== PEMBUKA - DIBUAT DARI KODE, BUKAN GAMBAR ===== */
+#opening{background:radial-gradient(ellipse at 50% 0%,#123a2d 0%,#071512 55%,#04100c 100%);overflow:hidden}
+.open-frame{position:absolute;inset:10px;border:1px solid rgba(201,168,106,.75);border-radius:4px;pointer-events:none}
+.open-frame:before{content:"";position:absolute;inset:5px;border:1px solid rgba(201,168,106,.35);border-radius:2px}
+.open-corner{position:absolute;width:42px;height:42px;border:2px solid var(--gold2);pointer-events:none}
+.open-corner.tl{top:10px;left:10px;border-right:none;border-bottom:none}
+.open-corner.tr{top:10px;right:10px;border-left:none;border-bottom:none}
+.open-corner.bl{bottom:10px;left:10px;border-right:none;border-top:none}
+.open-corner.br{bottom:10px;right:10px;border-left:none;border-top:none}
+.open-orn{position:absolute;font-size:34px;color:rgba(201,168,106,.25);pointer-events:none;line-height:1}
+.open-orn.o1{top:22px;left:22px}
+.open-orn.o2{top:22px;right:22px;transform:scaleX(-1)}
+.open-orn.o3{bottom:22px;left:22px;transform:scaleY(-1)}
+.open-orn.o4{bottom:22px;right:22px;transform:scale(-1)}
+.open-content{position:relative;z-index:2;flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(18px + env(safe-area-inset-top)) 26px calc(18px + env(safe-area-inset-bottom));gap:8px;overflow-y:auto}
+.open-top{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold2)}
+@keyframes kitabIn{from{opacity:0;transform:translateY(10px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes kitabShine{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes kitabGlow{0%,100%{box-shadow:0 10px 26px rgba(0,0,0,.45),0 0 0 rgba(232,213,168,0)}50%{box-shadow:0 10px 26px rgba(0,0,0,.45),0 0 22px rgba(232,213,168,.55)}}
+@keyframes mppBlink{0%,100%{opacity:1;transform:scale(1);text-shadow:0 0 10px rgba(255,228,94,.9),0 0 22px rgba(255,228,94,.55)}50%{opacity:.35;transform:scale(.97);text-shadow:0 0 2px rgba(255,228,94,.2)}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.kitab-badge{display:flex;flex-direction:column;align-items:center;gap:8px;margin:8px 0 2px}
+.kitab-main{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(110deg,#c9a86a 20%,#fff6d8 38%,#e8d5a8 50%,#c9a86a 68%);background-size:200% 100%;color:#1a1408;font-weight:900;letter-spacing:.18em;font-size:13px;padding:11px 22px;border-radius:4px;border:1px solid rgba(255,255,255,.7);box-shadow:0 10px 26px rgba(0,0,0,.45);animation:kitabIn .7s .15s ease both,kitabShine 3.2s 1.2s linear infinite,kitabGlow 2.8s 1.2s ease-in-out infinite}
+.kitab-main i{width:6px;height:6px;border-radius:50%;background:#1a1408;display:block}
+.masterpiece{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.35);border:1px solid rgba(201,168,106,.6);padding:9px 13px;border-radius:999px}
+.masterpiece b{color:var(--gold2)}
+.mpp{display:inline-block;color:#ffe45e;font-weight:900;letter-spacing:.28em;animation:mppBlink 1.15s ease-in-out infinite}
+.open-name{font-family:Georgia,serif;font-size:clamp(36px,9vw,62px);line-height:.95;font-weight:600;letter-spacing:-.02em;animation:fadeInUp .7s .45s ease both}
+.open-sub{font-size:clamp(14px,4vw,19px);letter-spacing:.28em;text-transform:uppercase;color:#f2e6c2;animation:fadeInUp .7s .55s ease both}
+.open-line{width:68px;height:1px;background:var(--gold);margin:8px 0 2px}
+.open-big{font-family:Georgia,serif;font-size:clamp(32px,9vw,54px);line-height:1.05;font-weight:700;color:#f5e3a8;text-shadow:0 4px 22px rgba(0,0,0,.5);animation:fadeInUp .7s .65s ease both}
+.open-big2{font-family:Georgia,serif;font-size:clamp(19px,5.4vw,30px);line-height:1.25;color:#fff8dc;animation:fadeInUp .7s .75s ease both}
+.open-mot{max-width:580px;font-size:clamp(13.5px,3.7vw,16.5px);line-height:1.65;color:#efe8d6;font-style:italic;margin-top:6px;animation:fadeInUp .7s .85s ease both}
+.open-important{max-width:580px;background:rgba(255,255,255,.06);border:1px solid rgba(201,168,106,.45);border-radius:12px;padding:10px 14px;font-size:clamp(12.5px,3.4vw,14.5px);line-height:1.6;color:#f5eedd;animation:fadeInUp .7s .9s ease both}
+.open-important b{color:#fff}
+.btn-enter{margin-top:10px;width:min(100%,360px);height:56px;flex:0 0 56px;border-radius:999px;background:linear-gradient(180deg,#e8d5a8,#c9a86a);color:#1a1408;font-weight:800;font-size:16px;letter-spacing:.04em;box-shadow:0 14px 30px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;gap:8px;animation:fadeInUp .7s 1s ease both}
+.btn-enter:active{transform:scale(.98)}
+.btn-enter small{font-size:12px;font-weight:800;opacity:.75;letter-spacing:.08em}
+.open-foot{font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,.72);margin-top:6px;text-transform:uppercase;animation:fadeInUp .7s 1.05s ease both}
+
+/* ===== MAIN VIEW ===== */
+#main{background:var(--bg)}
+.topbar{height:60px;flex:0 0 60px;display:flex;align-items:center;justify-content:space-between;padding:0 12px 0 14px;background:rgba(15,46,38,.97);border-bottom:1px solid rgba(201,168,106,.28);z-index:20}
+.top-left{display:flex;align-items:center;gap:10px;min-width:0}
+.top-logo{width:38px;height:38px;object-fit:contain;border-radius:50%;background:#fff;padding:2px;cursor:pointer}
+.top-title{line-height:1.1;min-width:0}
+.top-title b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.top-title span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);white-space:nowrap}
+.top-kitab{font-size:10px;letter-spacing:.18em;font-weight:800;background:var(--gold);color:#1a1408;padding:5px 8px;border-radius:999px;white-space:nowrap}
+.top-actions{display:flex;gap:6px;align-items:center}
+.icon-btn{width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;font-size:18px}
+.icon-btn.active{background:var(--gold);color:#1a1408}
+.main-body{flex:1;min-height:0;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.progress{height:4px;background:rgba(255,255,255,.12);flex:0 0 4px}
+.progress i{display:block;height:100%;background:var(--gold);width:6.25%;transition:width .35s}
+.slide-meta{display:flex;align-items:center;justify-content:space-between;padding:10px 16px 6px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);gap:8px}
+.slide-meta span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slide-meta b{color:var(--gold2);font-size:12px;white-space:nowrap}
+.slide-wrap{flex:1;min-height:0;overflow:hidden;position:relative;touch-action:pan-y}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden}
+.slide.active{display:flex}
+
+/* ===== PRESISI UKURAN & LETAK GAMBAR ===== */
+.slide-img-box{
+  width:100%;
+  height:40%;
+  flex:0 0 40%;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 16px 38px;
+  background:radial-gradient(ellipse at 50% 42%,#184c3c 0%,#0b241d 65%,#061410 100%);
+  border-bottom:1px solid rgba(201,168,106,.22);
+  overflow:hidden;
+}
+.slide-img-box:before{
+  content:"❖";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size:64px;
+  color:rgba(201,168,106,.16);
+  pointer-events:none;
+}
+.slide-img-box img{
+  position:relative;
+  z-index:1;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  object-position:center center;
+  border-radius:10px;
+  border:1px solid rgba(201,168,106,.35);
+  box-shadow:0 10px 26px rgba(0,0,0,.55);
+  background:rgba(4,16,12,.55);
+}
+.slide-img-box:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:linear-gradient(180deg,transparent 84%,rgba(7,21,18,.88) 100%);
+  pointer-events:none;
+}
+.slide-img-badge{
+  position:absolute;
+  left:50%;
+  bottom:8px;
+  transform:translateX(-50%);
+  z-index:3;
+  max-width:calc(100% - 28px);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  background:rgba(7,21,18,.82);
+  border:1px solid rgba(201,168,106,.38);
+  color:var(--gold2);
+  padding:5px 12px;
+  border-radius:999px;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  backdrop-filter:blur(6px);
+}
+
+.slide-text{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:16px 18px 18px;scrollbar-width:thin}
+.slide-text h2{font-family:Georgia,serif;font-size:clamp(22px,6vw,30px);line-height:1.18;margin-bottom:8px;color:#fff8e7}
+.slide-text h3{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:14px 0 6px}
+.slide-text p{font-size:clamp(15px,4.1vw,17px);line-height:1.75;color:#e9e4d6;margin-bottom:10px}
+.slide-text blockquote{margin:10px 0;padding:12px 14px;border-left:3px solid var(--gold);background:rgba(201,168,106,.10);border-radius:0 10px 10px 0;font-size:14.5px;line-height:1.65;color:#f5eedd}
+.slide-text blockquote i{color:var(--gold2)}
+.slide-text ul,.slide-text ol{margin:6px 0 12px 18px;line-height:1.7;font-size:15px;color:#e9e4d6}
+.slide-text li{margin-bottom:6px}
+.slide-text b{color:#fff}
+.hl-gold{color:#ffd76a;font-weight:800}
+.hl-green{color:#7ef0a8;font-weight:800}
+.hl-blue{color:#7ec8ff;font-weight:800}
+.hl-orange{color:#ffb26b;font-weight:800}
+.hl-pink{color:#ff9ec6;font-weight:800}
+.hl-yellow{color:#ffe45e;font-weight:800}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
+.legend span{font-size:11px;font-weight:800;padding:5px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06)}
+
+/* ===== AUDIO PLAYER ===== */
+.player{flex:0 0 auto;background:#0c231d;border-top:1px solid rgba(201,168,106,.28);padding:10px 14px calc(10px + env(safe-area-inset-bottom))}
+.player-row{display:flex;align-items:center;gap:10px}
+.time{font-size:12px;min-width:42px;text-align:center;color:#d9d2bd;font-variant-numeric:tabular-nums}
+input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:6px;border-radius:999px;background:rgba(255,255,255,.18);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:#e8d5a8;border:3px solid #0f2e26;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#e8d5a8;border:3px solid #0f2e26}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:8px}
+.ctrl-group{display:flex;align-items:center;gap:8px}
+.nav-btn{height:44px;padding:0 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-weight:700;font-size:13px;display:flex;align-items:center;gap:6px}
+.nav-btn:disabled{opacity:.35}
+.play-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(180deg,#e8d5a8,#c9a86a);color:#1a1408;font-size:20px;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.35)}
+.speed-btn{height:36px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font-size:12px;font-weight:700}
+.audio-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center;margin-top:6px}
+.audio-label b{color:#fff}
+
+/* ===== TOC DRAWER ===== */
+.toc{position:absolute;inset:0;z-index:30;display:none;background:rgba(0,0,0,.55)}
+.toc.open{display:block}
+.toc-panel{position:absolute;right:0;top:0;bottom:0;width:min(92vw,360px);background:#0f2e26;border-left:1px solid rgba(201,168,106,.3);display:flex;flex-direction:column;overflow:hidden}
+.toc-head{padding:16px;border-bottom:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:center}
+.toc-head b{font-family:Georgia,serif;font-size:20px}
+.toc-list{flex:1;overflow-y:auto;padding:10px}
+.toc-item{width:100%;text-align:left;display:flex;gap:12px;align-items:flex-start;padding:12px;border-radius:12px;margin-bottom:4px}
+.toc-item.active{background:rgba(201,168,106,.16);border:1px solid rgba(201,168,106,.35)}
+.toc-num{width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:12px;font-weight:800}
+.toc-item.active .toc-num{background:var(--gold);color:#1a1408}
+.toc-item span{font-size:13.5px;line-height:1.4;color:#e9e4d6}
+.toc-item small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+
+@media (orientation:portrait){
+  .slide{flex-direction:column}
+  .slide-img-box{width:100%;height:40%;flex:0 0 40%;padding:10px 16px 38px;border-bottom:1px solid rgba(201,168,106,.22);border-right:none}
+}
+@media (orientation:landscape) and (max-height:520px){
+  .topbar{height:52px;flex-basis:52px}
+  .slide{flex-direction:row}
+  .slide-img-box{width:46%;height:100%;flex:0 0 46%;padding:10px 14px 36px;border-bottom:none;border-right:1px solid rgba(201,168,106,.22)}
+  .slide-text{padding:14px 18px}
+  .player{padding-top:8px}
+  .open-content{justify-content:center;padding-top:10px;padding-bottom:10px;gap:5px}
+  .open-big{font-size:30px}
+  .open-big2{font-size:18px}
+  .open-important,.open-mot{display:none}
+}
+@media (orientation:landscape) and (min-height:521px){
+  .slide{flex-direction:row}
+  .slide-img-box{width:46%;height:100%;flex:0 0 46%;padding:18px 20px 44px;border-bottom:none;border-right:1px solid rgba(201,168,106,.22)}
+  .slide-text{padding:22px 28px}
+}
+@media (min-width:900px){
+  .main-body{max-width:1100px;margin:0 auto;width:100%}
+  .slide{flex-direction:row}
+  .slide-img-box{width:46%;height:100%;flex:0 0 46%;padding:20px 24px 46px;border-bottom:none;border-right:1px solid rgba(201,168,106,.22)}
+  .slide-text{padding:22px 32px}
+  .slide-text p{font-size:17px}
+  .player{max-width:1100px;margin:0 auto;width:100%}
+  .topbar{padding-left:22px;padding-right:22px}
+}
+@media (prefers-reduced-motion:reduce){
+  .kitab-main,.mpp{animation:none}
+}
+</style>
+</head>
+<body>
+<section id="opening" class="page active">
+  <div class="open-frame"></div>
+  <div class="open-corner tl"></div><div class="open-corner tr"></div><div class="open-corner bl"></div><div class="open-corner br"></div>
+  <div class="open-orn o1">❖</div><div class="open-orn o2">❖</div><div class="open-orn o3">❖</div><div class="open-orn o4">❖</div>
+  <div class="open-content">
+    <div class="open-top">Deka Sonjaya • Modern Spiritual</div>
+    <div class="kitab-badge">
+      <div class="kitab-main"><i></i> KAJIAN MA’RIFAT • MASTERPIECE <i></i></div>
+      <div class="masterpiece">★ <b>MASTERPIECE</b> • <span class="mpp">MATERI PALING PENTING</span> ★</div>
+    </div>
+    <div class="open-name">Deka Sonjaya</div>
+    <div class="open-sub">Modern Spiritual</div>
+    <div class="open-line"></div>
+    <div class="open-big">Hakikat Insan &amp; Khalifah</div>
+    <div class="open-big2">— Menyingkap Rahasia Latif, Tajalli Nur Muhammad &amp;<br>Kemuliaan Nisfu Syakban —</div>
+    <p class="open-mot">“Sebenar-benar insan adalah rupa Muhammad, sebenar-benar rupa Muhammad adalah sifat Allah, dan sebenar-benar sifat Allah adalah Zatullah — La ilaha illallah.”</p>
+    <div class="open-important"><b>Kajian Tauhid &amp; Ma’rifat • Hakikat Insan, Khalifah, Nur Muhammad &amp; Nisfu Syakban.</b><br>16 Slide • Naskah Narasi Utuh • Audio Player • Panduan Spiritual</div>
+    <button class="btn-enter" id="enterBtn">Masuk <small>— Bismillah</small> &nbsp; →</button>
+    <div class="open-foot">Kajian Ma’rifat • 16 Slide • Full Screen</div>
+  </div>
+</section>
+
+<section id="main" class="page">
+  <header class="topbar">
+    <div class="top-left">
+      <img class="top-logo" id="logoHome" src="logo.png" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2231%22 fill=%22%230f2e26%22 stroke=%22%23c9a86a%22 stroke-width=%222%22/%3E%3Ctext x=%2232%22 y=%2239%22 font-family=%22Georgia,serif%22 font-size=%2222%22 font-weight=%22bold%22 fill=%22%23e8d5a8%22 text-anchor=%22middle%22%3EDS%3C/text%3E%3C/svg%3E';" alt="Logo - Kembali ke Pembuka" title="Kembali ke Pembuka - Tetap Full Screen">
+      <div class="top-title"><b>Deka Sonjaya</b><span>Modern Spiritual</span></div>
+    </div>
+    <div class="top-actions"><span class="top-kitab">KAJIAN KHALIFAH</span><button class="icon-btn" id="tocBtn" title="Daftar Isi">☰</button></div>
+  </header>
+
+  <div class="main-body">
+    <div class="progress"><i id="progressBar"></i></div>
+    <div class="slide-meta"><span id="slideKicker">Bagian 1 • Pembukaan & Kaidah Dasar</span><b id="slideCount">1 / 16</b></div>
+    <div class="slide-wrap" id="slideWrap"></div>
+    <div class="player">
+      <div class="player-row">
+        <span class="time" id="curTime">0:00</span>
+        <input type="range" id="seek" min="0" max="100" value="0" step="0.1" aria-label="Geser audio">
+        <span class="time" id="durTime">0:00</span>
+      </div>
+      <div class="controls">
+        <div class="ctrl-group"><button class="nav-btn" id="prevBtn">← Sebelumnya</button></div>
+        <div class="ctrl-group"><button class="speed-btn" id="speedBtn">1x</button><button class="play-btn" id="playBtn">▶</button></div>
+        <div class="ctrl-group"><button class="nav-btn" id="nextBtn">Berikutnya →</button></div>
+      </div>
+      <div class="audio-label">Audio: <b id="audioLabel">slide1.mp3</b> • Geser bar untuk ke menit yang diinginkan</div>
+    </div>
+    <div class="toc" id="toc"><div class="toc-panel"><div class="toc-head"><b>Daftar Isi (16 Bagian)</b><button class="icon-btn" id="closeToc">✕</button></div><div class="toc-list" id="tocList"></div></div></div>
+  </div>
+</section>
+
+<audio id="audio" preload="auto" playsinline></audio>
+
+<script>
+const LEGEND=`<div class="legend"><span style="color:#ffd76a">● ZAT / TAUHID MURNI</span><span style="color:#7ef0a8">● SIFAT / TAREKAT</span><span style="color:#7ec8ff">● NUR MUHAMMAD / RUH</span><span style="color:#ffb26b">● ZAHIR / SYARIAT</span><span style="color:#ff9ec6">● BATIN / HAKIKAT</span></div>`;
+
+const slides=[
+{
+  t:"Pembukaan & Kaidah Dasar",
+  k:"Bagian 1 • Pembukaan & Kaidah Dasar Pengenalan Diri",
+  h:"Pembukaan & Kaidah Dasar Pengenalan Diri",
+  c:LEGEND+`<p><i>Assalamu’alaikum warahmatullahi wabarakatuh.</i></p>
+  <p><i>Astaghfirullahal ‘azhim, bismillahirrahmanirrahim, alhamdulillahi rabbil ‘alamin, asyhadu an la ilaha illallah wahdahu la syarika lah, wa asyhadu anna sayyidana wa maulana Muhammadan ‘abduhu wa rasuluh, Allahumma shalli wa sallim ‘ala sayyidina Muhammadin wa ‘ala alihi wa shahbihi ajma’in.</i></p>
+  <p><span class="hl-gold">Saudaraku</span>, perkenalkan, <span class="hl-yellow">saya Deka Sonjaya</span>. Pada kesempatan yang mulia ini, saya akan memaparkan kajian mendalam mengenai hakikat pengenalan diri, agar kita senantiasa terjaga dari keterpakuan pada pandangan lahiriah semata dan terhindar dari ilusi atau tipu daya fenomena semu.</p>
+  <p>Sebagai landasan utama sebelum melangkah lebih jauh, mari kita catat dan pahami <b>tiga kaidah fundamental</b> berikut:</p>
+  <ol>
+    <li><b><span class="hl-blue">Sebenar-benar insan adalah rupa Muhammad.</span></b></li>
+    <li><b><span class="hl-green">Sebenar-benar rupa Muhammad adalah sifat Allah.</span></b></li>
+    <li><b><span class="hl-gold">Sebenar-benar sifat Allah adalah Zatullah.</span></b></li>
+  </ol>
+  <p>Seluruh rangkaian kesadaran hakikat ini kemudian bermuara dan terkunci dalam satu kalimat tauhid, yakni <span class="hl-yellow"><i>La ilaha illallah</i></span>.</p>
+  <blockquote><i>La ilaha illallah.</i><br><b>Simpul Tauhid • Deka Sonjaya</b></blockquote>`
+},
+{
+  t:"Makna Latif & Rahasia Tajalli",
+  k:"Bagian 2 • Makna Latif & Rahasia Tajalli Tuhan pada Insan",
+  h:"Makna Latif & Rahasia Tajalli Tuhan pada Insan",
+  c:LEGEND+`<p>Dalam khazanah ilmu makrifat, isyarat huruf <span class="hl-gold">Lam</span> yang bersandar pada huruf <span class="hl-gold">Alif</span> melambangkan sifat <span class="hl-yellow">Latif</span>, yakni bagaimana kemahahalusan Allah Ta'ala terwujud secara nyata pada diri Nabi Muhammad Rasulullah shallallahu ‘alaihi wa sallam. Hal ini selaras dengan firman Allah dalam Surah Asy-Syura ayat 19:</p>
+  <blockquote><i>"Allahu latifun bi ‘ibadihi yarzuqu man yasya'u wa huwal qawiyyul ‘aziz."</i><br><b>QS. Asy-Syura: 19</b> — Allah Maha Lembut lagi Maha Halus terhadap hamba-hamba-Nya; Dia memberi rezeki kepada siapa yang Dia kehendaki, dan Dialah Yang Maha Kuat lagi Maha Perkasa.</blockquote>
+  <p>Makna <span class="hl-pink">Latif</span> dalam konteks ini menjelaskan bagaimana <span class="hl-blue">tajalli</span> atau penampakan sifat Tuhan hadir pada diri seorang hamba. Mengapa demikian? Sebab hamba merupakan penyimpan rahasia ketuhanan, dan insan yang wujud ini tidak lain adalah <span class="hl-green">mazhar</span>—yakni lokus kenyataan atau manifestasi Tuhan.</p>
+  <p>Sebagaimana ditegaskan dalam sebuah Hadis Qudsi: <span class="hl-gold"><i>"Al-insanu sirri wa ana sirruhu"</i></span> — Insan itu adalah rahasia-Ku, dan Aku pun adalah rahasianya. Karena kemahahalusan-Nya itulah, rahasia Tuhan bersemayam secara nyata di dalam diri insan.</p>`
+},
+{
+  t:"Insan sebagai Khalifah",
+  k:"Bagian 3 • Insan sebagai Khalifah & Perbedaan Hafal dengan Hafiz",
+  h:"Insan sebagai Khalifah & Perbedaan Hafal dengan Hafiz",
+  c:LEGEND+`<p>Selain menyandang predikat <span class="hl-pink">Latif</span> karena menyimpan rahasia ketuhanan, insan juga mengemban kedudukan sebagai <span class="hl-gold">Khalifah</span>. Secara hakiki, khalifah bermakna <b>pengganti</b>—yakni <span class="hl-yellow">pengganti Tuhan dalam memerintah dan mengendalikan batang tubuh</span>.</p>
+  <p>Untuk memahami kedudukan khalifah ini secara tepat, kita wajib berpegang teguh pada isyarat Al-Qur'an agar tidak menyimpang dari kebenaran. Memahami Al-Qur'an secara mendalam bukanlah perkara yang ringan. Di sinilah letak perbedaan mendasar antara sekadar <span class="hl-orange">hafal</span> dan menjadi seorang <span class="hl-green">hafiz</span>:</p>
+  <ul>
+    <li><b><span class="hl-orange">Hafal:</span></b> Sekadar mengingat susunan pelafalan teks secara lahiriah tanpa menyelami maknanya.</li>
+    <li><b><span class="hl-green">Hafiz:</span></b> Tidak hanya mengingat susunan lafaznya, melainkan juga mengerti kandungan makna dan hakikatnya.</li>
+  </ul>
+  <p>Sebaliknya, apabila seseorang hanya menghafal lafaz tanpa memahami esensinya, hadis Nabi mengingatkan bahwa banyak pembaca Al-Qur'an yang justru mendapat laknat dari Al-Qur'an itu sendiri karena perilakunya bertentangan dengan isi kitab suci tersebut.</p>`
+},
+{
+  t:"Bedah Ayat Khalifah",
+  k:"Bagian 4 • Bedah Ayat Inni Ja'ilun fil Ardhi Khalifah (QS. Al-Baqarah: 30)",
+  h:"Bedah Ayat Inni Ja'ilun fil Ardhi Khalifah (QS. Al-Baqarah: 30)",
+  c:LEGEND+`<p>Mari kita telaah firman Allah dalam Surah Al-Baqarah ayat 30: <span class="hl-gold"><i>"Inni ja'ilun fil ardhi khalifah"</i></span>. Secara terjemahan harfiah, ayat ini bermakna: <i>"Sesungguhnya Aku hendak menjadikan seorang khalifah di muka bumi."</i></p>
+  <p>Namun, apabila kita mencermati struktur bahasanya, ayat ini menggunakan kata <span class="hl-yellow">Inni</span> (gabungan <i>inna</i> sebagai penegas atau <i>lit-taukid</i> dan <i>ya' mutakallim</i> yang merujuk pada Aku). Secara lahiriah tampak seolah-olah Tuhan menciptakan khalifah yang terpisah dari diri-Nya, padahal pada hakikatnya <span class="hl-blue">Dia yang menjadikan itulah yang terwujud</span>.</p>
+  <blockquote><i>"Subhana man khalaqal asya'a wa huwa ‘ainuha."</i><br><b>Kaidah Ulama Hakikat</b> — Maha Suci Allah Ta'ala yang telah menciptakan segala sesuatu, lalu sesuatu yang tampak dijadikan tersebut dinamakan makhluk, padahal hakikat sesuatu itu adalah Dia sendiri (<i>wa huwa ‘ainuha</i>).</blockquote>
+  <p>Apabila titik temu ini telah dipahami, maka batas antara <span class="hl-gold">Khaliq</span> (Pencipta) dan <span class="hl-orange">makhluk</span> (ciptaan) hanyalah pada tataran penamaan secara lahiriah. Jika seseorang berhenti pada pengakuan sebagai makhluk semata tanpa mengenal Tuhan yang menjadi hakikat di baliknya, ia akan terjebak dalam kebinasaan rohani. Itulah sebabnya insan disebut sebagai <span class="hl-pink">sirr</span> (rahasia Tuhan) sekaligus <span class="hl-gold">khalifah</span>.</p>`
+},
+{
+  t:"Kelangkaan Ahli Makrifat",
+  k:"Bagian 5 • Kelangkaan Ahli Makrifat & Duka Wafatnya Ulama Pewaris",
+  h:"Kelangkaan Ahli Makrifat & Duka Wafatnya Ulama Pewaris",
+  c:LEGEND+`<p>Memahami makna khalifah dan rahasia Al-Qur'an memang membutuhkan kedalaman batin, sebagaimana firman Allah dalam Surah Al-Isra ayat 85: <span class="hl-gold"><i>"Wa ma utitum minal ‘ilmi illa qalila"</i></span> — dan tidaklah kamu diberi pengetahuan melainkan sedikit. Golongan yang benar-benar dianugerahi pemahaman ilmu hakikat ini pun jumlahnya sangat terbatas.</p>
+  <p>Oleh karena itu, berpulangnya para wali Allah dan ahli makrifat merupakan peristiwa besar yang diibaratkan sebagai kiamat bagi semesta, sesuai dengan kaidah: <span class="hl-yellow"><i>"Mautul ‘alim mautul ‘alam"</i></span> — wafatnya seorang ulama adalah matinya alam, sebab merekalah yang menghidupkan alam ini secara spiritual.</p>
+  <blockquote><i>"Man lam yahzan bi mautil ‘alim fahuwa munafiq."</i><br><b>Al-Habib Abdullah bin Alwi Al-Haddad (Shohibur Ratib)</b> — Barang siapa yang tidak bersedih atas wafatnya seorang alim, maka ia tergolong orang munafik.</blockquote>
+  <p>Sepeninggal Habib Abdullah Al-Haddad, estafet kequthuban atau kepemimpinan ruhani tersebut dilanjutkan dengan lahirnya <span class="hl-blue">Syekh Samman Al-Madani</span>. Artinya, pada setiap zaman senantiasa hadir sosok pengganti (<span class="hl-gold">khalifah</span>) yang memikul amanah spiritual umat, bukan sekadar pengganti dalam urusan seremonial duniawi semata.</p>
+  <p>Rasulullah shallallahu ‘alaihi wa sallam juga mensifati bahwa orang yang tidak berduka atas wafatnya ulama adalah seburuk-buruk manusia. Sebaliknya, masyarakat awam yang bersedih karena wafatnya ulama akan diampuni dosa-dosanya berkat ketulusan rasa cintanya (<span class="hl-green">mahabbah</span>). Musibah terbesar dalam agama adalah wafatnya Rasulullah sebagai penutup para nabi, serta wafatnya para ulama sebagai pewaris dan pengganti beliau.</p>`
+},
+{
+  t:"Hierarki Pemerintahan Batin",
+  k:"Bagian 6 • Hierarki Pemerintahan Batin & Hakikat Fardu Ain",
+  h:"Hierarki Pemerintahan Batin & Hakikat Fardu Ain",
+  c:LEGEND+`<p>Mengapa insan disebut sebagai pengganti Tuhan dalam memerintah tubuh? Mari kita tinjau hierarki kepemimpinan di dalam diri manusia secara berurutan:</p>
+  <ol>
+    <li><b><span class="hl-gold">Sirr</span></b> (rahasia Tuhan) berjasadkan <b><span class="hl-blue">Ruh</span></b>, sehingga Ruh merupakan kenyataan dari Sirr.</li>
+    <li><b><span class="hl-blue">Ruh</span></b> berjasadkan <b><span class="hl-pink">Hati</span></b>, sehingga Hati merupakan kenyataan dari Ruh.</li>
+    <li><b><span class="hl-pink">Hati</span></b> berjasadkan <b><span class="hl-orange">Batang Tubuh</span></b>, sehingga batang tubuh ini merupakan kenyataan dari Hati.</li>
+  </ol>
+  <p>Dengan demikian, seluruh aktivitas fisik adalah manifestasi dari gerakan hati, gerakan hati adalah manifestasi dari ruh, dan gerakan ruh adalah manifestasi dari <i>Sirr</i>. Pada hakikatnya, <span class="hl-yellow">diri memerintah diri sendiri</span>.</p>
+  <p>Dari susunan inilah kita menemukan makna terdalam dari istilah <span class="hl-green"><i>Fardu Ain</i></span>. Dalam disiplin ilmu fikih, <i>fardu ain</i> dipahami sebagai kewajiban individual yang tidak dapat diwakilkan, berbeda dengan <i>fardu kifayah</i> yang gugur apabila telah ditunaikan oleh sebagian kaum muslimin. Namun dalam tinjauan hakikat, kata <span class="hl-gold"><i>Ain</i></span> bermakna <b>yang nyata</b>.</p>
+  <p>Siapakah yang nyata beramal dan mengemban kewajiban tersebut? Bukan keakuan ego kita sebagai makhluk yang merasa memiliki daya upaya sendiri, melainkan <i>Sirr</i> atau <i>Ain</i> yang nyata itu. Selama seseorang masih merasa dirinya sendirilah yang berkuasa menunaikan kewajiban, maka amalnya belum mencapai derajat kesempurnaan.</p>`
+},
+{
+  t:"Perbedaan Ahmad & Muhammad",
+  k:"Bagian 7 • Mengenal Nur Muhammad: Perbedaan Ahmad dan Muhammad",
+  h:"Mengenal Nur Muhammad: Perbedaan Ahmad dan Muhammad",
+  c:LEGEND+`<p>Lantas, siapakah sosok <i>Ain</i> yang memerintah di dalam diri tersebut? Dialah <span class="hl-gold">Ahmad</span>, yakni wujud kesempurnaan sifat ketuhanan yang paling awal berupa <span class="hl-blue">Nur</span> (Cahaya).</p>
+  <p>Di sini kita perlu membedakan secara jelas antara kedudukan <b>Ahmad</b> dan <b>Muhammad</b>:</p>
+  <ul>
+    <li><b><span class="hl-pink">Ahmad (Aspek Batin):</span></b> Tatkala masih berada pada maqam batin sebagai cahaya pertama dan menjadi sumber bagi seluruh ruh—sebagaimana pernyataan Nur, <i>"Ana abul arwah"</i> (Aku adalah bapak sekalian ruh)—namanya adalah <b>Ahmad</b>.</li>
+    <li><b><span class="hl-orange">Muhammad (Aspek Zahir):</span></b> Selanjutnya, tatkala Nur tersebut zahir dan terwujud dalam bentuk semesta alam beserta jasad manusia (yang bertalian dengan maqam <i>"Wa Adamu abul basyar"</i>, yakni Adam sebagai bapak sekalian jasad), maka namanya berubah menjadi <b>Muhammad</b>.</li>
+  </ul>
+  <p>Pemahaman ini menjadi tolok ukur utama bagi kesempurnaan ibadah kita. Amal pertama yang akan dihisab pada hari kiamat adalah <span class="hl-green">salat</span>. Apabila salatnya sempurna, maka seluruh amal lainnya akan diterima; sebaliknya, apabila salatnya tidak sempurna, maka seluruh amalnya tertolak.</p>
+  <p>Salat mencapai kesempurnaan apabila kita menanggalkan keakuan diri dan menyadari sepenuhnya bahwa yang menegakkan ibadah tersebut adalah <span class="hl-yellow"><i>Al-Haqq</i></span>—yakni Nur yang menjadi nyawa bagi sekalian nyawa, sebagaimana firman Allah: <span class="hl-gold"><i>"Qad ja'akumul haqqu min rabbikum"</i></span> (Sungguh telah datang kepadamu kebenaran/<i>Al-Haqq</i> dari Tuhanmu).</p>`
+},
+{
+  t:"Perjalanan Tajalli Ketuhanan",
+  k:"Bagian 8 • Perjalanan Tajalli: Dari Hu, Allah, Nur, hingga Rasulullah",
+  h:"Perjalanan Tajalli: Dari Hu, Allah, Nur, hingga Rasulullah",
+  c:LEGEND+`<p>Mari kita telusuri tahapan <span class="hl-gold">tajalli</span> ketuhanan ini secara runtut agar memberikan pemahaman yang utuh:</p>
+  <ol>
+    <li><b><span class="hl-gold">Hu:</span></b> Pada awalnya, tatkala Tuhan berada dalam keesaan-Nya yang mutlak sebelum terciptanya segala sesuatu, sebutan-Nya adalah <b>Hu</b>—nama di atas segala nama.</li>
+    <li><b><span class="hl-blue">Huwallah (Nur):</span></b> Ketika Tuhan berkehendak untuk dikenal, <i>Hu</i> pun menampakkan diri pada Nur-Nya, sehingga terungkap dalam kalimat <i>Huwallah</i> (Allah tatkala berada di dalam Nur-Nya). Dengan kata lain, <b>Nur</b> adalah rahasia Zat, ilmu Allah, asal mula segala kejadian, bukti autentik adanya Allah, serta nyawa bagi seluruh kehidupan. Tanpa keberadaan Nur ini, alam semesta beserta seluruh isinya, termasuk diri kita, tidak akan pernah terwujud.</li>
+    <li><b><span class="hl-green">Rasulullah:</span></b> Berikutnya, tatkala Nur tersebut zahir secara historis sebagai utusan pembawa risalah di Madinah—sebagaimana diisyaratkan dalam ayat <i>"Laqad ja'akum rasulun min anfusikum"</i>—beliau bernama <b>Rasulullah</b> yang menjadi teladan utama (<i>uswatun hasanah</i>). Dalam hal ini, kalangan terpelajar dan akademisi hendaknya tidak hanya mengandalkan rasionalitas akal semata hingga melupakan sumber asal-usul Nur tersebut.</li>
+    <li><b><span class="hl-orange">Muhammad:</span></b> Kemudian, tatkala Nur itu zahir secara menyeluruh meliputi alam semesta beserta isinya termasuk diri kita, sebutannya adalah <b>Muhammad</b>.</li>
+  </ol>
+  <p>Pada titik inilah berlaku kaidah makrifat: <span class="hl-yellow"><i>"Man ‘arafa nafsahu faqad ‘arafa rabbahu"</i></span>—barang siapa mengenal dirinya, maka ia mengenal Tuhannya. Seseorang yang telah mencapai tingkatan pengenalan ini akan terjaga sikap dan lisannya (<span class="hl-pink"><i>kalla lisanuhu</i></span>). Ia tidak akan pernah sesumbar mengaku sebagai Tuhan atau Nabi, karena hakikat kebenaran tersebut telah menyatu secara nyata di dalam kesadaran batinnya.</p>`
+},
+{
+  t:"Kesatuan Zahir-Batin & Zikir",
+  k:"Bagian 9 • Kesatuan Zahir-Batin, Qadimnya Nur, & Zikir Ahmad–Muhammad",
+  h:"Kesatuan Zahir-Batin, Qadimnya Nur, & Zikir Pujian Ahmad–Muhammad",
+  c:LEGEND+`<p>Perpaduan antara aspek zahir dan aspek batin inilah yang membentuk <span class="hl-gold">Insan</span>, yakni hakikat diri Muhammad. Oleh sebab itu, kalimat <b>Ahmadur Rasulullah</b> merujuk pada dimensi batin, sedangkan <b>Muhammadur Rasulullah</b> merujuk pada dimensi zahir, namun keduanya merupakan satu kesatuan yang tidak terpisahkan.</p>
+  <h3>Tiga Prinsip Utama yang Wajib Kita Pahami:</h3>
+  <ol>
+    <li><b><span class="hl-pink">Kesatuan Batin dan Zahir:</span></b> Ahmad dan Muhammad bukanlah dua entitas yang berbeda, melainkan satu kesatuan hakikat batin dan zahir pada diri insan.</li>
+    <li><b><span class="hl-blue">Nur Bersifat Qadim:</span></b> Apakah Nur ini bersifat <i>qadim</i> (terdahulu dan kekal)? Jawabannya adalah <b>tetap qadim</b>. Pihak yang menganggapnya <i>muhdats</i> (baru) karena melihatnya seolah-olah diciptakan, sejatinya belum memahami bahwa yang tampak diciptakan itu hakikatnya adalah Dia yang terwujud. Oleh karena itu, kita memanjatkan doa: <span class="hl-yellow"><i>"Ya Ahmad, ya Muhammad, sallimna bi ihsanikal qadim."</i></span></li>
+    <li><b><span class="hl-green">Kesatuan Liputan:</span></b> Sebelum zahir, aspek zahir diliputi oleh yang <i>qadim</i>; dan setelah zahir, aspek <i>qadim</i> meliputi yang zahir. Perubahan tersebut hanyalah pergantian posisi penampakan, sementara hakikatnya tetap satu.</li>
+  </ol>
+  <h3>Zikir Pujian Empat Huruf Nama Ahmad (ا - ح - م - د):</h3>
+  <ul>
+    <li><b><span class="hl-gold">Alif:</span></b> <i>Shallallahu ‘ala Muhammad huwallahul haqq</i></li>
+    <li><b><span class="hl-green">Ha:</span></b> <i>Shallallahu ‘ala Muhammad huwallahul hayyul hamid</i></li>
+    <li><b><span class="hl-blue">Mim:</span></b> <i>Shallallahu ‘ala Muhammad huwallahul muhyil majid</i></li>
+    <li><b><span class="hl-pink">Dal:</span></b> <i>Shallallahu ‘ala Muhammad huwallahu da'iratul wujud</i></li>
+  </ul>
+  <h3>Zikir Pujian Empat Huruf Nama Muhammad (م - ح - م - د):</h3>
+  <ul>
+    <li><b><span class="hl-gold">Mim:</span></b> <i>Shallallahu ‘ala Muhammad huwallahul mulkul mamdud</i></li>
+    <li><b><span class="hl-green">Ha:</span></b> <i>Shallallahu ‘ala Muhammad huwallahul haudhul maurud</i></li>
+    <li><b><span class="hl-blue">Mim:</span></b> <i>Shallallahu ‘ala Muhammad huwallahul muhithu bil maujud</i></li>
+    <li><b><span class="hl-pink">Dal:</span></b> <i>Shallallahu ‘ala Muhammad huwallahu dawamun bil maqamil mahmud</i></li>
+  </ul>
+  <p>Mengapa kita harus mengenal Zat di balik seluruh penampakan ini? Sebab jika kita hanya bersandar pada sisi kemakhlukan yang fana, niscaya kita akan sirna. Hanya Zat-Nya sajalah yang bersifat kekal abadi.</p>`
+},
+{
+  t:"Tajalli Sifat 20 & Asma 99",
+  k:"Bagian 10 • Dalil Kedua Khalifah: Tajalli Sifat 20 & Asmaul Husna",
+  h:"Dalil Kedua Khalifah: Tajalli Sifat 20 & Asmaul Husna (99 Nama)",
+  c:LEGEND+`<p>Alasan kedua mengapa insan disebut sebagai <span class="hl-gold">Khalifah</span> adalah karena insan merupakan <span class="hl-yellow">tajalli kesempurnaan Zat, Sifat, Asma, dan Af'al Allah</span>. Pada titik ini kembali terungkap makna <span class="hl-pink">Latif</span>—sangat halus bagaikan partikel debu lembut yang tidak terlihat oleh pandangan mata biasa, namun tampak jelas bagi mata hati yang tajam bahwa Nur tersebut meliputi seluruh dirinya.</p>
+  <h3>1. Tajalli Sifat 20 pada Rupa Insan:</h3>
+  <p><span class="hl-green">Sifat</span> bermakna <b>rupa</b>. Kedua puluh sifat Allah terwujud secara nyata pada rupa insan. Sebagai contoh, sifat <i>Mukhalafatuhu ta'ala lil hawadits</i> (Allah berbeda dengan segala sesuatu yang baru). Secara lahiriah tampak adanya perbedaan antara Pencipta dan ciptaan, padahal pada hakikatnya Dialah yang nyata. Siapa pun yang mempelajari maupun mengajarkan Sifat 20—mulai dari <i>Wujud</i> hingga <i>Mutakallimun</i>—hendaknya benar-benar menembus pemahaman hakikatnya agar tidak mudah menyesatkan atau mengkafirkan sesama hanya karena terhenti pada pemaknaan tekstual.</p>
+  <h3>2. Tajalli Asmaul Husna (99 Nama) pada Perilaku:</h3>
+  <p><span class="hl-blue">Asma</span> bermakna <b>nama</b>. Kesembilan puluh sembilan nama Allah (<i>Asmaul Husna</i>) tidak cukup sekadar dihafalkan dari <i>Allah</i> hingga <i>As-Sabur</i>, sebab ke-99 nama tersebut teraktualisasi dalam perilaku kita sehari-hari. Sebagai contoh adalah sifat <b>Ar-Rahman</b> (Maha Pengasih) dan <b>Ar-Rahim</b> (Maha Penyayang). Kasih sayang Tuhan tersebut nyata melalui tindakan manusia saat berbagi, menyantuni sesama, maupun keharmonisan kasih sayang di dalam keluarga. Setiap nama senantiasa menunjuk kepada Pemilik Nama yang menggerakkan perbuatan mulia tersebut.</p>`
+},
+{
+  t:"Pakaian Ketuhanan (7 Sifat)",
+  k:"Bagian 11 • Dalil Ketiga Khalifah: Mengenakan Pakaian Ketuhanan",
+  h:"Dalil Ketiga Khalifah: Mengenakan Pakaian Ketuhanan (Sifat Ma'ani)",
+  c:LEGEND+`<p>Alasan ketiga mengapa insan menyandang gelar <span class="hl-gold">Khalifah</span> adalah karena <span class="hl-yellow">insan mengenakan pakaian ketuhanan</span>, yakni mewarisi pancaran sifat-sifat Tuhan. Kaidah ini dirumuskan dalam ungkapan: <span class="hl-pink"><i>"Sifati wa sifatuhu la ghair"</i></span> — sifatku dan sifat-Nya tidaklah berbeda pada hakikatnya.</p>
+  <p>Terdapat <b>tujuh sifat utama</b> yang menjadi sifat <span class="hl-blue">Ruh Idhafi</span> atau nyawa Muhammad (Nur) yang dikenakan oleh insan, yaitu:</p>
+  <ol>
+    <li><b><span class="hl-gold">Qudrat</span></b> (Kuasa)</li>
+    <li><b><span class="hl-green">Iradat</span></b> (Berkehendak)</li>
+    <li><b><span class="hl-blue">Ilmu</span></b> (Mengetahui)</li>
+    <li><b><span class="hl-yellow">Hayat</span></b> (Hidup)</li>
+    <li><b><span class="hl-orange">Sama'</span></b> (Mendengar)</li>
+    <li><b><span class="hl-pink">Bashar</span></b> (Melihat)</li>
+    <li><b><span class="hl-gold">Kalam</span></b> (Berkata-kata)</li>
+  </ol>
+  <p>Ketujuh sifat ini bertajalli dan berfungsi secara nyata di dalam diri insan. Karena mengenakan pakaian ketuhanan inilah, insan berhak mengemban amanah sebagai khalifah di muka bumi.</p>`
+},
+{
+  t:"Kemuliaan Nisfu Syakban",
+  k:"Bagian 12 • Keutamaan Malam Nisfu Syakban dalam Kitab Durratun Nashihin",
+  h:"Keutamaan Malam Nisfu Syakban dalam Kitab Durratun Nashihin",
+  c:LEGEND+`<p>Selanjutnya, mari kita hubungkan pemahaman hakikat khalifah ini dengan kemuliaan ibadah malam <span class="hl-gold">Nisfu Syakban</span>, agar penghayatan ibadah kita tahun ini jauh lebih bermakna dibandingkan tahun-tahun sebelumnya.</p>
+  <p>Di dalam kitab <span class="hl-blue"><i>Durratun Nashihin</i></span>, diriwayatkan sebuah hadis dari Abu Hurairah radhiyallahu ‘anhu bahwa Rasulullah shallallahu ‘alaihi wa sallam bersabda:</p>
+  <blockquote><i>"Atani Jibrilu lailatan nishfi min Sya'ban, faqala: Ya Muhammad, hadzihi lailatun tuftahu fiha abwabus sama'i wa abwabur rahmah."</i><br><b>Hadis Riwayat Abu Hurairah (Durratun Nashihin)</b> — Malaikat Jibril datang menemuiku pada malam Nisfu Syakban dan berkata, "Wahai Muhammad, malam ini adalah malam dibukakannya pintu-pintu langit (pintu ampunan) dan pintu-pintu rahmat."</blockquote>
+  <p>Malaikat Jibril kemudian menyerukan: <span class="hl-yellow"><i>"Faqum"</i></span> (bangunlah untuk beribadah), <span class="hl-green"><i>"washalli"</i></span> (dirikanlah salat), angkatlah kepalamu serta kedua tanganmu untuk berdoa. Ketika Nabi bertanya mengenai keistimewaan malam tersebut, Jibril menjelaskan bahwa pada malam itu Allah membukakan <span class="hl-gold">300 pintu rahmat</span> dan mengampuni dosa seluruh umat Nabi Muhammad SAW, <span class="hl-pink">kecuali bagi orang yang menyekutukan Allah (<i>man yusyrik billah</i>)</span>.</p>`
+},
+{
+  t:"Bebas dari Syirik Tersembunyi",
+  k:"Bagian 13 • Terbebas dari Syirik Tersembunyi sebagai Kunci Ampunan",
+  h:"Terbebas dari Syirik Tersembunyi sebagai Kunci Ampunan",
+  c:LEGEND+`<p>Mari kita cermati syarat mutlak diperolehnya ampunan pada malam Nisfu Syakban tersebut: <i>seluruh dosa diampuni kecuali bagi mereka yang berbuat syirik</i>. Meskipun seseorang menunaikan salat malam Nisfu Syakban di Tanah Suci Makkah, Hadramaut, maupun di majelis-majelis mulia lainnya, apabila di dalam hatinya masih tersimpan <span class="hl-pink">syirik</span>, maka ampunan tersebut tidak akan tercapai.</p>
+  <p>Syirik tidak sebatas penyembahan terhadap berhala. Pengakuan bertuhan kepada Allah secara lisan belum menjamin terbebasnya seseorang dari syirik apabila batinnya masih merasa memiliki wujud dan kekuasaan sendiri di samping Allah.</p>
+  <p>Di sinilah letak rahasia perintah <span class="hl-yellow"><i>"Faqum"</i></span> (bangunlah mendirikan salat). Tatkala berdiri menghadap Allah, hadirkanlah kesadaran mengenai urutan kenyataan wujud diri kita:</p>
+  <ul>
+    <li>Sosok zahir yang berdiri ini adalah <b><span class="hl-orange">Adam atau Insan</span></b>.</li>
+    <li>Wujud Adam atau Insan ini adalah <b><span class="hl-green">wujud Muhammad</span></b>.</li>
+    <li>Wujud Muhammad ini adalah <b><span class="hl-blue">sifat Nur</span></b>.</li>
+    <li>Sifat Nur ini adalah <b><span class="hl-gold">Zat Allah</span></b>.</li>
+  </ul>
+  <p>Apabila kesadaran tauhid ini hadir secara utuh—bahwa seluruh gerakan berdiri, rukuk, iktidal, hingga salam merupakan <i>tajalli</i> diri memerintah diri—maka salat kita bersih dari syirik dan layak menerima limpahan 300 pintu rahmat serta ampunan Allah Ta'ala.</p>`
+},
+{
+  t:"Rahasia 20 Sifat dalam Basmalah",
+  k:"Bagian 14 • Rahasia 20 Sifat Allah dalam Kalimat Bismillahirrahmanirrahim",
+  h:"Rahasia 20 Sifat Allah dalam Kalimat Bismillahirrahmanirrahim",
+  c:LEGEND+`<p>Seluruh 20 sifat Allah sesungguhnya telah terangkum secara nyata di dalam diri kita melalui kalimat <span class="hl-gold"><i>Bismillahirrahmanirrahim</i></span>. Secara hakikat, susunan kalimat ini mengandung makna:</p>
+  <ul>
+    <li><b><span class="hl-blue">Bismillah:</span></b> Aku Tuhan menjadikan diriku, bermula dari huruf <i>Ba</i> yakni <b>Nur</b>.</li>
+    <li><b><span class="hl-green">Ar-Rahman:</span></b> Aku mengadakan <b>Muhammad</b> tatkala Nur tersebut zahir.</li>
+    <li><b><span class="hl-pink">Ar-Rahim:</span></b> Aku menyatakan <b>rahasia-Ku</b>—wahai Muhammad, engkaulah rahasia-Ku.</li>
+  </ul>
+  <h3>Pemetaan Lengkap 20 Sifat Allah pada Susunan Basmalah:</h3>
+  <ol>
+    <li><b>Titik awal sebelum huruf Ba:</b> <span class="hl-gold">Wujud</span></li>
+    <li><b>Ba (ب):</b> <span class="hl-gold">Qidam</span></li>
+    <li><b>Sin (س):</b> <span class="hl-gold">Baqa'</span></li>
+    <li><b>Mim (م):</b> <span class="hl-gold">Mukhalafatuhu ta'ala lil hawadits</span></li>
+    <li><b>Alif pada lafaz Allah (ا):</b> <span class="hl-gold">Qiyamuhu ta'ala binafsihi</span></li>
+    <li><b>Lam awal (ل):</b> <span class="hl-green">Wahdaniyah</span></li>
+    <li><b>Lam akhir (ل):</b> <span class="hl-green">Qudrat</span></li>
+    <li><b>Ha (هـ):</b> <span class="hl-green">Iradat</span></li>
+    <li><b>Alif pada Ar-Rahman (ا):</b> <span class="hl-green">Ilmu</span></li>
+    <li><b>Lam (ل):</b> <span class="hl-green">Hayat</span></li>
+    <li><b>Ra (ر):</b> <span class="hl-blue">Sama'</span></li>
+    <li><b>Ha (ح):</b> <span class="hl-blue">Bashar</span></li>
+    <li><b>Mim (م):</b> <span class="hl-blue">Kalam</span></li>
+    <li><b>Nun (ن):</b> <span class="hl-blue">Qadiran</span></li>
+    <li><b>Alif pada Ar-Rahim (ا):</b> <span class="hl-blue">Muridan</span></li>
+    <li><b>Lam (ل):</b> <span class="hl-pink">'Aliman</span></li>
+    <li><b>Ra (ر):</b> <span class="hl-pink">Hayyan</span></li>
+    <li><b>Ha (ح):</b> <span class="hl-pink">Sami'an</span></li>
+    <li><b>Ya (ي):</b> <span class="hl-pink">Bashiran</span></li>
+    <li><b>Mim (م):</b> <span class="hl-pink">Mutakalliman</span></li>
+  </ol>
+  <p>Hal ini membuktikan bahwa khalifah adalah kenyataan <i>tajalli</i> sifat-sifat ketuhanan yang terhimpun sempurna dalam kalimat <i>Bismillahirrahmanirrahim</i>.</p>`
+},
+{
+  t:"Wujud Hakiki vs Wujud Majazi",
+  k:"Bagian 15 • Menembus Ilusi Pandangan Zahir & Wujud Hakiki vs Majazi",
+  h:"Menembus Ilusi Pandangan Zahir & Wujud Hakiki vs Majazi",
+  c:LEGEND+`<p>Dalam lanjutan hadis Nisfu Syakban sebelumnya, golongan lain yang tidak memperoleh ampunan adalah <span class="hl-pink"><i>"illa man kana sahiran au kahinan"</i></span>—yakni pelaku sihir maupun praktik perdukunan dan tenung.</p>
+  <p>Secara lahiriah, praktik sihir dan tenung jelas terlarang dan tertolak. Namun dalam dimensi hakikat, setiap kali kita memandang fenomena alam zahir seolah-olah berdiri sendiri dan meyakini bayangan tersebut sebagai kenyataan mutlak, sejatinya kita sedang terperdaya oleh 'sihir' pandangan lahiriah setiap saat. Sebab sihir bermakna tipuan, dan alam zahir ini bersifat menipu (<span class="hl-orange"><i>al-zhahiru khad'atun</i></span>).</p>
+  <p>Agar kita terbebas dari ilusi pandangan zahir tersebut, kembalilah berpegang pada kaidah awal kita: <span class="hl-gold"><i>Sebenar-benar insan rupa Muhammad, sebenar-benar rupa Muhammad sifat Allah, sebenar-benar sifat Allah Zatullah — La ilaha illallah.</i></span></p>
+  <h3>Perbedaan Mendasar antara Wujud Hakiki dan Wujud Majazi:</h3>
+  <ul>
+    <li><b><span class="hl-gold">Wujud Hakiki:</span></b> Adalah Zatullah (khalifah sejati) yang mustahil dijangkau oleh pandangan <i>wujud majazi</i> (penglihatan lahiriah). Meskipun demikian, Zat tidak perlu dicari ke tempat yang jauh karena telah nyata di dalam diri. Sebagaimana sabda Nabi: <span class="hl-yellow"><i>"Tafakkaru fi khalqillah wa la tafakkaru fi dzatillah"</i></span> — pikirkanlah ciptaan (kenyataan) Allah, dan jangan memikirkan Zat Allah. Sebagaimana gula yang telah larut menyatu dalam segelas teh sehingga menghadirkan rasa manis, kita tidak perlu lagi mencari butiran gulanya. Kenalilah hakikat insan, maka dengan sendirinya kita akan mengenal Allah.</li>
+    <li><b><span class="hl-orange">Wujud Majazi:</span></b> Alam zahir pada hakikatnya tiada di hadapan Wujud Hakiki. Yang benar-benar ada hanyalah <span class="hl-blue"><i>Al-Haqq</i> (Allah)</span>, sedangkan alam semesta beserta diri kita merupakan kenyataan Muhammad.</li>
+  </ul>`
+},
+{
+  t:"Enam Gelar Insan & Penutup",
+  k:"Bagian 16 • Enam Gelar Kemuliaan Insan, Zikir, & Penutup",
+  h:"Enam Gelar Kemuliaan Insan, Zikir, & Penutup",
+  c:LEGEND+`<p>Sebagai rangkuman penutup materi kali ini, ketahuilah bahwa insan memiliki <span class="hl-gold">enam gelar kemuliaan</span>:</p>
+  <ol>
+    <li><b><span class="hl-pink">Latif</span></b> (rahasia kehalusan Tuhan)</li>
+    <li><b><span class="hl-gold">Khalifah</span></b> (ganti Tuhan memerintah tubuh)</li>
+    <li><b><span class="hl-yellow">Imamul Mubin</span></b> (raja atau pemimpin yang nyata/<i>Malikin nas</i>, sebagaimana syair: <i>"Nahnu nazalna bi himakum wallahu ya'lamu khairal anam, anta syamsun anta badrun anta fid-dunya imam"</i>)</li>
+    <li><b><span class="hl-blue">Arsyullah</span></b> (Arasy Tuhan)</li>
+    <li><b><span class="hl-green">Mir'atul Haqq</span></b> (cermin kebenaran)</li>
+    <li><b><span class="hl-orange">Iradatul Wujud</span></b> (kehendak adanya wujud)</li>
+  </ol>
+  <p>InsyaAllah, pembahasan mengenai gelar ketiga, <i>Imamul Mubin</i>, akan kita kaji pada pertemuan berikutnya.</p>
+  <p>Mari kita sempurnakan majelis ini dengan membaca <b>Surah Al-Ikhlas</b> tiga kali, <b>Surah Al-Falaq</b>, <b>Surah An-Nas</b>, <b>Surah Al-Fatihah</b>, serta melantunkan shalawat dan zikir bersama:</p>
+  <ul>
+    <li><i>Shallallahu ‘ala Muhammadin wa huwa rabbul ‘arsyil ‘azhim</i></li>
+    <li><i>Ya Ahmad, ya Muhammad, sallimna bi ihsanikal qadim</i></li>
+    <li><i>Shallallahu ‘ala Muhammad huwallahul qadimul awwal, qadimul akhir, qadimuzh zhahir, qadimul bathin</i></li>
+    <li><i>La ilaha illallah Muhammadur Rasulullah, Subhanallahi wa bihamdihi Subhanallahil ‘azhim, Allahumma shalli ‘ala habibika sayyidina Muhammadin wa ‘ala alihi wa shahbihi wa barik wa sallim ajma’in.</i></li>
+  </ul>
+  <p><span class="hl-gold">Saudaraku sekalian</span>, demikianlah kajian yang dapat saya sampaikan pada kesempatan ini. Saya, <b>Deka Sonjaya</b>, memohon maaf apabila terdapat kekhilafan kata dalam penyampaian. Semoga Allah Ta'ala senantiasa melimpahkan rahmat, ampunan, serta mengabulkan setiap doa dan hajat terbaik kita semua. Terima kasih atas perhatian dan kebersamaan <span class="hl-green">saudaraku semua</span>.</p>
+  <blockquote><i>Wassalamu’alaikum warahmatullahi wabarakatuh.</i><br><b>Deka Sonjaya • Modern Spiritual</b></blockquote>`
+}
+];
+
+const opening=document.getElementById('opening'), main=document.getElementById('main'), wrap=document.getElementById('slideWrap'), toc=document.getElementById('toc'), tocList=document.getElementById('tocList');
+const audio=document.getElementById('audio'), seek=document.getElementById('seek'), curTime=document.getElementById('curTime'), durTime=document.getElementById('durTime'), playBtn=document.getElementById('playBtn'), prevBtn=document.getElementById('prevBtn'), nextBtn=document.getElementById('nextBtn'), speedBtn=document.getElementById('speedBtn'), progressBar=document.getElementById('progressBar'), slideKicker=document.getElementById('slideKicker'), slideCount=document.getElementById('slideCount'), audioLabel=document.getElementById('audioLabel');
+let idx=0, speeds=[1,1.25,1.5,2], speedIdx=0, isSeeking=false;
+
+slides.forEach((s,i)=>{
+  const el=document.createElement('article');
+  el.className='slide'+(i===0?' active':'');
+  el.dataset.i=i;
+  el.innerHTML=`<div class="slide-img-box"><img src="slide${i+1}.jpg" alt="Slide ${i+1}" onerror="if(this.dataset.triedBg){this.style.display='none';}else{this.dataset.triedBg='1';this.src='background.jpg';}"><div class="slide-img-badge">Slide ${i+1} • ${s.t}</div></div><div class="slide-text"><h2>${s.h}</h2>${s.c}</div>`;
+  wrap.appendChild(el);
+
+  const b=document.createElement('button');
+  b.className='toc-item'+(i===0?' active':'');
+  b.innerHTML=`<span class="toc-num">${i+1}</span><span>${s.t}<small>${s.k}</small></span>`;
+  b.onclick=()=>{closeToc(); goTo(i,true);};
+  tocList.appendChild(b);
+});
+
+const slideEls=[...wrap.querySelectorAll('.slide')], tocItems=[...tocList.querySelectorAll('.toc-item')];
+function fmt(s){ if(!isFinite(s)) return '0:00'; s=Math.floor(s); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+function render(){
+  slideEls.forEach((el,i)=>el.classList.toggle('active',i===idx));
+  tocItems.forEach((el,i)=>el.classList.toggle('active',i===idx));
+  slideKicker.textContent=slides[idx].k;
+  slideCount.textContent=(idx+1)+' / '+slides.length;
+  progressBar.style.width=((idx+1)/slides.length*100)+'%';
+  prevBtn.disabled=idx===0;
+  nextBtn.disabled=idx===slides.length-1;
+  const txt=wrap.querySelector('.slide.active .slide-text');
+  if(txt) txt.scrollTop=0;
+}
+function playAudio(auto=true){
+  const file=`slide${idx+1}.mp3`;
+  if(audio.dataset.file!==file){
+    audio.src=file;
+    audio.dataset.file=file;
+    seek.value=0;
+    curTime.textContent='0:00';
+    durTime.textContent='0:00';
+  }
+  audioLabel.textContent=file;
+  audio.playbackRate=speeds[speedIdx];
+  if(auto){
+    audio.play().catch(()=>{ playBtn.textContent='▶'; });
+  }
+  playBtn.textContent='⏸';
+}
+function goTo(i, autoplay=true){ idx=Math.max(0,Math.min(slides.length-1,i)); render(); playAudio(autoplay); }
+function next(){ if(idx<slides.length-1) goTo(idx+1,true); }
+function prev(){ if(idx>0) goTo(idx-1,true); }
+
+async function goFullscreen(){
+  try{
+    const el=document.documentElement;
+    if(!document.fullscreenElement && !document.webkitFullscreenElement){
+      if(el.requestFullscreen) await el.requestFullscreen();
+      else if(el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      else if(el.msRequestFullscreen) el.msRequestFullscreen();
+    }
+  }catch(e){}
+}
+
+document.getElementById('enterBtn').onclick=async()=>{
+  await goFullscreen();
+  opening.classList.remove('active');
+  main.classList.add('active');
+  idx=0;
+  render();
+  playAudio(true);
+};
+document.getElementById('logoHome').onclick=async()=>{
+  audio.pause();
+  playBtn.textContent='▶';
+  closeToc();
+  await goFullscreen();
+  main.classList.remove('active');
+  opening.classList.add('active');
+  window.scrollTo(0,0);
+};
+document.getElementById('tocBtn').onclick=()=>{
+  toc.classList.add('open');
+  document.getElementById('tocBtn').classList.add('active');
+  const activeToc=tocList.querySelector('.toc-item.active');
+  if(activeToc) activeToc.scrollIntoView({block:'nearest'});
+};
+function closeToc(){
+  toc.classList.remove('open');
+  document.getElementById('tocBtn').classList.remove('active');
+}
+document.getElementById('closeToc').onclick=closeToc;
+toc.onclick=(e)=>{ if(e.target===toc) closeToc(); };
+prevBtn.onclick=prev;
+nextBtn.onclick=next;
+playBtn.onclick=()=>{
+  if(audio.paused){ audio.play().catch(()=>{}); playBtn.textContent='⏸'; }
+  else { audio.pause(); playBtn.textContent='▶'; }
+};
+speedBtn.onclick=()=>{
+  speedIdx=(speedIdx+1)%speeds.length;
+  audio.playbackRate=speeds[speedIdx];
+  speedBtn.textContent=speeds[speedIdx]+'x';
+};
+audio.addEventListener('timeupdate',()=>{
+  if(!isSeeking && audio.duration){
+    seek.value=(audio.currentTime/audio.duration)*100;
+    curTime.textContent=fmt(audio.currentTime);
+    durTime.textContent=fmt(audio.duration);
+  }
+});
+audio.addEventListener('loadedmetadata',()=>{ durTime.textContent=fmt(audio.duration); });
+audio.addEventListener('ended',()=>{ if(idx<slides.length-1) next(); else { playBtn.textContent='▶'; }});
+audio.addEventListener('play',()=>playBtn.textContent='⏸');
+audio.addEventListener('pause',()=>playBtn.textContent='▶');
+seek.addEventListener('input',()=>{
+  isSeeking=true;
+  if(audio.duration){
+    const v=(seek.value/100)*audio.duration;
+    curTime.textContent=fmt(v);
+  }
+});
+seek.addEventListener('change',()=>{
+  if(audio.duration){ audio.currentTime=(seek.value/100)*audio.duration; }
+  isSeeking=false;
+});
+
+let sx=0, sy=0;
+wrap.addEventListener('touchstart',e=>{ sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
+wrap.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+  if(Math.abs(dx)>70 && Math.abs(dy)<60){
+    if(dx<0) next(); else prev();
+  }
+},{passive:true});
+document.addEventListener('keydown',e=>{
+  if(!main.classList.contains('active')) return;
+  if(e.key==='ArrowRight') next();
+  if(e.key==='ArrowLeft') prev();
+  if(e.key===' ') { e.preventDefault(); playBtn.click(); }
+  if(e.key==='Escape') closeToc();
+});
+
+render();
+</script>
+</body>
+</html>
